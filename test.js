@@ -8,21 +8,18 @@ const NO_POSTER = "https://placehold.co/300x450/18181b/a1a1aa?text=No+Poster";
 
 movieForm.addEventListener("submit", (e) => {
     e.preventDefault();
-
     let query = movieInput.value.trim();
-
     if (!query) {
         return;
     }
-    // console.log(query);
     searchMovies(query);
-})
+});
 
 async function searchMovies(movieName) {
     movieHub.innerHTML = `<div class="col-span-full flex justify-center py-20"><span class="loader"></span></div>`;
-    
+
     try {
-        let response = await fetch(`https://www.omdbapi.com/?apikey=4f527ec5&s=${encodeURIComponent(movieName)}`);
+        let response = await fetch(`https://www.omdbapi.com/?apikey=3eed3bad&s=${encodeURIComponent(movieName)}`);
         let data = await response.json();
 
         if (data.Response === "True") {
@@ -36,8 +33,7 @@ async function searchMovies(movieName) {
 }
 
 function displayMovies(movies) {
-
-    movieHub.innerText = "";
+    movieHub.innerHTML = "";
 
     movies.forEach((movie) => {
         const div = document.createElement("div");
@@ -72,91 +68,76 @@ movieHub.addEventListener("click", (e) => {
     }
 });
 
-
 let data = [
     {
-        "Title": "The Dark Knight",
+        "Title": "Kill Bill: Vol. 1",
+        "Year": "2003",
+        "imdbID": "tt0266697",
+        "Type": "movie",
+        "Poster": "https://m.media-amazon.com/images/M/MV5BZmMyYzJlZmYtY2I3NC00NjAyLTkyZWItZjdjZDI1YTYyYTEwXkEyXkFqcGc@._V1_QL75_UX380_CR0,4,380,562_.jpg"
+    },
+    {
+        "Title": "Kill Bill: Vol. 2",
+        "Year": "2004",
+        "imdbID": "tt0378194",
+        "Type": "movie",
+        "Poster": "https://m.media-amazon.com/images/M/MV5BY2FiNzhiZTctNzU1Mi00NDkwLWExNDMtZTg0MjYyNzhkNWNkXkEyXkFqcGc@._V1_QL75_UX380_CR0,0,380,562_.jpg"
+    },
+    {
+        "Title": "To Kill a Mockingbird",
+        "Year": "1962",
+        "imdbID": "tt0056592",
+        "Type": "movie",
+        "Poster": "https://m.media-amazon.com/images/M/MV5BZTlkYWU4MGEtZmQyYi00OWEzLTgzY2EtYzVjOTEzYzAyNTk1XkEyXkFqcGc@._V1_SX300.jpg"
+    },
+    {
+        "Title": "A Time to Kill",
+        "Year": "1996",
+        "imdbID": "tt0117913",
+        "Type": "movie",
+        "Poster": "https://m.media-amazon.com/images/M/MV5BYmNiYzY1N2ItZDZiNC00ZGMyLWJlZjktZDE1MDI3NDBlYjE5XkEyXkFqcGc@._V1_SX300.jpg"
+    },
+    {
+        "Title": "Sin City: A Dame to Kill For",
+        "Year": "2014",
+        "imdbID": "tt0458481",
+        "Type": "movie",
+        "Poster": "https://m.media-amazon.com/images/M/MV5BMjA5ODYwNjgxMF5BMl5BanBnXkFtZTgwMTcwNzAyMjE@._V1_SX300.jpg"
+    },
+    {
+        "Title": "Licence to Kill",
+        "Year": "1989",
+        "imdbID": "tt0097742",
+        "Type": "movie",
+        "Poster": "https://m.media-amazon.com/images/M/MV5BYjY3OWJkMjMtYTgwYS00MjJjLWE4M2ItOWVhOWMxNGM1NDk3XkEyXkFqcGc@._V1_SX300.jpg"
+    },
+    {
+        "Title": "A View to a Kill",
+        "Year": "1985",
+        "imdbID": "tt0090264",
+        "Type": "movie",
+        "Poster": "https://m.media-amazon.com/images/M/MV5BZjc3ZTJkZjUtM2E4Mi00YzA1LWJkZTAtM2U0OWUyYTE4YTFiXkEyXkFqcGc@._V1_SX300.jpg"
+    },
+    {
+        "Title": "3 Days to Kill",
+        "Year": "2014",
+        "imdbID": "tt2172934",
+        "Type": "movie",
+        "Poster": "https://m.media-amazon.com/images/M/MV5BMzM0MjE0Nzg1N15BMl5BanBnXkFtZTgwODA4ODE4MDE@._V1_SX300.jpg"
+    },
+    {
+        "Title": "Righteous Kill",
         "Year": "2008",
-        "imdbID": "tt0468569",
+        "imdbID": "tt1034331",
         "Type": "movie",
-        "Poster": "https://m.media-amazon.com/images/M/MV5BMTMxNTMwODM0NF5BMl5BanBnXkFtZTcwODAyMTk2Mw@@._V1_QL75_UX380_CR0,0,380,562_.jpg"
+        "Poster": "https://m.media-amazon.com/images/M/MV5BMTYwMjg3MjY3OV5BMl5BanBnXkFtZTcwNTc4MDU3MQ@@._V1_SX300.jpg"
     },
     {
-        "Title": "The Dark Knight Rises",
-        "Year": "2012",
-        "imdbID": "tt1345836",
-        "Type": "movie",
-        "Poster": "https://m.media-amazon.com/images/M/MV5BMTk4ODQzNDY3Ml5BMl5BanBnXkFtZTcwODA0NTM4Nw@@._V1_QL75_UX380_CR0,0,380,562_.jpg"
-    },
-    {
-        "Title": "The Avengers",
-        "Year": "2012",
-        "imdbID": "tt0848228",
-        "Type": "movie",
-        "Poster": "https://m.media-amazon.com/images/M/MV5BNGE0YTVjNzUtNzJjOS00NGNlLTgxMzctZTY4YTE1Y2Y1ZTU4XkEyXkFqcGc@._V1_QL75_UX380_CR0,0,380,562_.jpg"
-    },
-    {
-        "Title": "Avengers: Age of Ultron",
-        "Year": "2015",
-        "imdbID": "tt2395427",
-        "Type": "movie",
-        "Poster": "https://m.media-amazon.com/images/M/MV5BODBhYTg1NGQtNGVmNS00ZTdiLThjYTYtZDFkNzRiNTZmNDZjXkEyXkFqcGc@._V1_QL75_UX380_CR0,0,380,562_.jpg"
-    },
-    {
-        "Title": "Inception",
-        "Year": "2010",
-        "imdbID": "tt1375666",
-        "Type": "movie",
-        "Poster": "https://m.media-amazon.com/images/M/MV5BMjAxMzY3NjcxNF5BMl5BanBnXkFtZTcwNTI5OTM0Mw@@._V1_QL75_UX380_CR0,0,380,562_.jpg"
-    },
-    {
-        "Title": "Triangle",
-        "Year": "2009",
-        "imdbID": "tt1187064",
-        "Type": "movie",
-        "Poster": "https://m.media-amazon.com/images/M/MV5BNzU3ZDA2MmUtYzFhMS00OGYyLWI3MDgtNDI4Zjg2YmRkNGYzXkEyXkFqcGc@._V1_SX300.jpg"
-    },
-    {
-        "Title": "The Prestige",
-        "Year": "2006",
-        "imdbID": "tt0482571",
-        "Type": "movie",
-        "Poster": "https://m.media-amazon.com/images/M/MV5BMTM3MzQ5MjQ5OF5BMl5BanBnXkFtZTcwMTQ3NzMzMw@@._V1_QL75_UY562_CR0,0,380,562_.jpg"
-    },
-    {
-        "Title": "Doctor Strange in the Multiverse of Madness",
-        "Year": "2022",
-        "imdbID": "tt9419884",
-        "Type": "movie",
-        "Poster": "https://m.media-amazon.com/images/M/MV5BN2YxZGRjMzYtZjE1ZC00MDI0LThjZmQtZTZmMzVmMmQ2NzBmXkEyXkFqcGc@._V1_QL75_UX380_CR0,0,380,562_.jpg"
-    },
-    {
-        "Title": "Interstellar",
-        "Year": "2014",
-        "imdbID": "tt0816692",
-        "Type": "movie",
-        "Poster": "https://m.media-amazon.com/images/M/MV5BYzdjMDAxZGItMjI2My00ODA1LTlkNzItOWFjMDU5ZDJlYWY3XkEyXkFqcGc@._V1_QL75_UX380_CR0,0,380,562_.jpg"
-    },
-    {
-        "Title": "Predestination",
-        "Year": "2014",
-        "imdbID": "tt2397535",
-        "Type": "movie",
-        "Poster": "https://m.media-amazon.com/images/M/MV5BY2VhODM5OTUtZDJhMi00MTc5LThjNjYtZWY1M2NlNWU0N2NjXkEyXkFqcGc@._V1_SX300.jpg"
-    },
-    {
-        "Title": "The Flash",
-        "Year": "2014–2023",
-        "imdbID": "tt3107288",
+        "Title": "Generation Kill",
+        "Year": "2008",
+        "imdbID": "tt0995832",
         "Type": "series",
-        "Poster": "https://m.media-amazon.com/images/M/MV5BMjU0ZjZhNDQtMDhkYi00OWQyLWE3NGYtNzBlY2VmM2I4ZDg5XkEyXkFqcGc@._V1_SX300.jpg"
-    },
-    {
-        "Title": "Deadpool & Wolverine",
-        "Year": "2024",
-        "imdbID": "tt6263850",
-        "Type": "movie",
-        "Poster": "https://m.media-amazon.com/images/M/MV5BZTk5ODY0MmQtMzA3Ni00NGY1LThiYzItZThiNjFiNDM4MTM3XkEyXkFqcGc@._V1_QL75_UX380_CR0,0,380,562_.jpg"
+        "Poster": "https://m.media-amazon.com/images/M/MV5BMTM2NjAxOTQzNl5BMl5BanBnXkFtZTcwMjk4NzU3MQ@@._V1_SX300.jpg"
     }
 ];
 
